@@ -7,9 +7,9 @@ module 0x1::disperse{
         let len = vector::length(&to);
         while (i < len){
             let amount = vector::borrow(&mut amounts, i);
-            let coins = coin::withdraw<FANV4>(sender, *amount);
+            let coins = coin::withdraw<CoinType>(sender, *amount);
             let to_addr = vector::borrow(&mut to, i);
-            coin::deposit<FANV4>(*to_addr, coins);
+            coin::deposit<CoinType>(*to_addr, coins);
             i = i + 1;
         }
     }
